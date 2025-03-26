@@ -12,8 +12,8 @@ import SignUp from "@/pages/SignUp";
 import Calender from "@/pages/Calender";
 import ProtectedRoute from "./ProtectedRoute";
 import CropRecomendation from "@/pages/CropRecomendation";
-import DiseasePrediction from "@/pages/DiseasePrediction";
-import Dashboard from "@/pages/Dashboard";
+import Home from "@/pages/Home";
+import DiseaseDetection from "@/pages/DiseaseDetection";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -26,10 +26,10 @@ const router = createBrowserRouter(
           </ProtectedRoute>
         }
       >
-        <Route index element={<Dashboard />} />
+        <Route index element={<Home />} />
         <Route path="calender" element={<Calender />} />
         <Route path="crop-recomendation" element={<CropRecomendation />} />
-        <Route path="disease-prediction" element={<DiseasePrediction />} />
+        <Route path="disease-detection" element={<DiseaseDetection />} />
       </Route>
       <Route path="/login" element={<LoginLayout />}>
         <Route index element={<Login />} />

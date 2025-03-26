@@ -15,26 +15,11 @@ import { Clock, MapPin, FileText } from "lucide-react";
 import { useGetEvents } from "@/hooks/use-calendar";
 import { toast } from "react-toastify";
 import AddCalendar from "@/components/Calendar/AddCalendar";
+import "../Styles/calendar.css";
 
 const localizer = momentLocalizer(moment);
 
 const MyCalendar = () => {
-  // const { data, isLoading, isFetched, isError, error } = useGetEvents();
-
-  // useEffect(() => {
-  //   if (isFetched) {
-  //     // console.log(data?.data);
-  //   }
-  // }, [isFetched, isLoading]);
-
-  // useEffect(() => {
-  //   if (isError) {
-  //     // console.log(error.response.data.meassage);
-  //     // console.log(error);
-  //     // toast.error(error.response.data.meassage);
-  //   }
-  // }, [isFetched, isLoading]);
-
   const [events, setEvents] = useState([
     {
       id: 1,
@@ -97,14 +82,14 @@ const MyCalendar = () => {
       <Dialog open={!!selectedEvent} onOpenChange={handleCloseEventDialog}>
         <DialogContent className="sm:max-w-[425px]">
           <DialogHeader>
-            <DialogTitle className="text-2xl font-bold">
+            <DialogTitle className="text-2xl font-bold text-primary">
               {selectedEvent.title}
             </DialogTitle>
           </DialogHeader>
 
           <div className="grid gap-4 py-4">
             <div className="flex items-center gap-4">
-              <Clock className="h-5 w-5 text-muted-foreground" />
+              <Clock className="h-5 w-5 text-primary" />
               <div>
                 <p className="text-sm font-medium">
                   {moment(selectedEvent.start).format("MMMM Do, YYYY")}
@@ -117,14 +102,14 @@ const MyCalendar = () => {
             </div>
 
             <div className="flex items-center gap-4">
-              <MapPin className="h-5 w-5 text-muted-foreground" />
+              <MapPin className="h-5 w-5 text-primary" />
               <p className="text-sm font-medium">
                 {selectedEvent.location || "No location specified"}
               </p>
             </div>
 
             <div className="flex items-start gap-4">
-              <FileText className="h-5 w-5 text-muted-foreground mt-1" />
+              <FileText className="h-5 w-5 text-primary mt-1" />
               <p className="text-sm text-muted-foreground">
                 {selectedEvent.description}
               </p>
@@ -143,14 +128,14 @@ const MyCalendar = () => {
   };
 
   return (
-    <div className="h-[95vh] p-4">
+    <div className="h-full  p-4 bg-[#e0f2df50]">
       <AddCalendar />
       <Calendar
         localizer={localizer}
         events={events}
         startAccessor="start"
         endAccessor="end"
-        style={{ height: "100%" }}
+        style={{ height: "93%" }}
         selectable={true}
         onSelectEvent={handleSelectEvent}
         date={date}
@@ -160,7 +145,7 @@ const MyCalendar = () => {
         views={[Views.MONTH, Views.WEEK, Views.DAY]}
         eventPropGetter={(event) => ({
           style: {
-            backgroundColor: "#3174ad",
+            backgroundColor: "#2ab86d",
             borderRadius: "5px",
             opacity: 0.8,
             color: "white",

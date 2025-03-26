@@ -42,25 +42,31 @@ const CropRecomendationForm = () => {
     },
   ];
   return (
-    <form action="">
-      <div className="pt-8 px-5 bg-primary-foreground/20 rounded-2xl w-1/2 h-[90vh]">
-        {formFields.map((field, index) => (
-          <div key={index} className="mt-7">
-            <Label htmlFor={field.id} className={"mb-2"}>
-              {field.label}
-            </Label>
-            <Input
-              type={"text"}
-              id={field.id}
-              className={
-                "border-primary-foreground focus-visible:ring-primary-foreground/50 focus-within:border-primary-foreground focus-within:outline-primary-foreground"
-              }
-            />
+    <div className="w-1/2">
+      <form id="crop-prediction-form">
+        <div className="bg-primary-foreground/20 rounded-2xl h-full border border-primary-foreground">
+          <div className="px-5 py-5">
+            {formFields.map((field, index) => (
+              <div key={index} className="mt-7">
+                <Label htmlFor={field.id} className={"mb-2"}>
+                  {field.label}
+                </Label>
+                <Input
+                  type={"text"}
+                  id={field.id}
+                  className={
+                    "border-primary-foreground focus-visible:ring-primary-foreground/50 focus-within:border-primary-foreground focus-within:outline-primary-foreground"
+                  }
+                />
+              </div>
+            ))}
+            <div className="w-full mx-auto mt-5">
+              <Button className={"w-full"}>Predict</Button>
+            </div>
           </div>
-        ))}
-        <Button>Predict</Button>
-      </div>
-    </form>
+        </div>
+      </form>
+    </div>
   );
 };
 
