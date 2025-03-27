@@ -22,8 +22,8 @@ const AICalendarSection = () => {
           {[
             "Personalized crop schedules",
             "Weather-adaptive planning",
-            "Timely notifications",
-            "Growth stage tracking",
+            // "Timely notifications",
+            // "Growth stage tracking",
           ].map((feature, index) => (
             <li key={index} className="flex items-center">
               <span className="mr-2 text-primary text-lg">•</span>

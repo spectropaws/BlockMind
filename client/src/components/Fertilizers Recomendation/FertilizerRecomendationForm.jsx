@@ -6,22 +6,27 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { recomendationSchema } from "@/zod-schemas/recomendationSchema";
 import { useGetRecomendations } from "@/hooks/use-recomendations";
+import { useGetFertilizers } from "@/hooks/use-fertilzers";
+import { fertilizersSchema } from "@/zod-schemas/fertilizersSchema";
 import { Loader } from "lucide-react";
 import { useDispatch, useSelector } from "react-redux";
 import { setFormData } from "@/Redux/Slices/formDataSlice";
 
-const CropRecomendationForm = () => {
+const FertilizerRecomendationForm = () => {
   const { data } = useSelector((state) => state.formData);
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm({
-    defaultValues: data,
-    resolver: zodResolver(recomendationSchema),
+    defaultValues: {
+      crop_label: "",
+      ...data,
+    },
+    resolver: zodResolver(fertilizersSchema),
   });
 
-  const mutation = useGetRecomendations();
+  const mutation = useGetFertilizers();
   const formFields = [
     {
       label: "N",
@@ -59,11 +64,37 @@ const CropRecomendationForm = () => {
       name: "rainfall",
     },
   ];
+
+  const crops = [
+    "rice",
+    "maize",
+    "chickpea",
+    "kidneybeans",
+    "pigeonpeas",
+    "mothbeans",
+    "mungbean",
+    "blackgram",
+    "lentil",
+    "pomegranate",
+    "banana",
+    "mango",
+    "grapes",
+    "watermelon",
+    "muskmelon",
+    "apple",
+    "orange",
+    "papaya",
+    "coconut",
+    "cotton",
+    "jute",
+    "coffee",
+  ];
   const dispatch = useDispatch();
   const onSubmit = async (data) => {
-    console.log(data);
-    dispatch(setFormData(data));
     mutation.mutate(data);
+    const { crop_label, ...saveData } = data;
+    dispatch(setFormData(saveData));
+    console.log(data);
   };
 
   return (
@@ -89,6 +120,22 @@ const CropRecomendationForm = () => {
                 )}
               </div>
             ))}
+            <div className="mt-7">
+              <Label htmlFor="crop" className={"mb-2"}>
+                Crop
+              </Label>
+              <select
+                {...register("crop_label")}
+                id="crop"
+                className={
+                  " border-2 rounded-md border-primary-foreground focus-visible:ring-primary-foreground/50 focus-within:border-primary-foreground focus-within:outline-primary-foreground w-full h-9 px-2"
+                }
+              >
+                {crops.map((crop) => (
+                  <option value={crop}>{crop}</option>
+                ))}
+              </select>
+            </div>
             <div className="w-full mx-auto mt-5">
               <Button className={"w-full"} disabled={mutation.isPending}>
                 {mutation.isPending ? (
@@ -105,4 +152,4 @@ const CropRecomendationForm = () => {
   );
 };
 
-export default CropRecomendationForm;
+export default FertilizerRecomendationForm;

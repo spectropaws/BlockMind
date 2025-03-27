@@ -14,6 +14,7 @@ import ProtectedRoute from "./ProtectedRoute";
 import CropRecomendation from "@/pages/CropRecomendation";
 import Home from "@/pages/Home";
 import DiseaseDetection from "@/pages/DiseaseDetection";
+import FertilizerRecomendation from "@/pages/FertilizerRecomendation";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -29,6 +30,10 @@ const router = createBrowserRouter(
         <Route index element={<Home />} />
         <Route path="calendar" element={<Calender />} />
         <Route path="crop-recomendation" element={<CropRecomendation />} />
+        <Route
+          path="fertilizers-recommendations"
+          element={<FertilizerRecomendation />}
+        />
         <Route path="disease-detection" element={<DiseaseDetection />} />
       </Route>
       <Route path="/login" element={<LoginLayout />}>

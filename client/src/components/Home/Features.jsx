@@ -6,7 +6,7 @@ import {
   CardDescription,
   CardFooter,
 } from "@/components/ui/card";
-import { Sprout, Leaf, Calendar } from "lucide-react";
+import { Sprout, Leaf, Calendar, PillBottle } from "lucide-react";
 import { Link } from "react-router-dom";
 
 const Features = () => {
@@ -26,11 +26,12 @@ const Features = () => {
       to: "/disease-detection",
     },
     {
-      icon: Calendar,
-      title: "Event Calendar",
+      icon: PillBottle,
+      title: "Fertilizer Optimization",
       description:
-        "Let our AI create optimized schedules for watering, fertilizing, and harvesting.",
-      to: "calendar",
+        "Receive custom fertilizer recommendations to maximize yield while minimizing costs.",
+
+      to: "/fertilizers-recommendations",
     },
   ];
 

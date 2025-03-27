@@ -35,7 +35,7 @@ const Landing = () => {
         <img
           src="/farmer2.svg"
           alt="Happy farmer in green field"
-          className="h-[500px] scale-150"
+          className="h-[400px] scale-150"
         />
       </div>
     </div>
