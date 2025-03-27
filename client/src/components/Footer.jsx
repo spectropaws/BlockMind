@@ -22,7 +22,7 @@ const Footer = () => {
     },
   ];
   return (
-    <footer className="container mx-auto pl-10 py-12 grid md:grid-cols-3 gap-8 mt-10">
+    <footer className="container mx-auto px-2 md:pl-10 py-12 grid md:grid-cols-3 gap-8 mt-10">
       <div>
         <div className="flex items-center mb-4">
           <Sprout className="h-8 w-8 text-primary mr-2" />

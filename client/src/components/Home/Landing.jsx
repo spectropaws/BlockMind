@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 
 const Landing = () => {
   return (
-    <div className="grid md:grid-cols-2 min-h-[80vh] items-center p-6">
+    <div className="grid md:grid-cols-2 min-h-[50vh] md:min-h-[80vh] items-center p-6">
       <div className="space-y-6 pl-8">
         <span className="text-primary font-medium text-lg">
           Smart Farming Technology
@@ -33,9 +33,9 @@ const Landing = () => {
       </div>
       <div className="hidden md:flex justify-center items-center">
         <img
-          src="/api/placeholder/600/400"
+          src="/farmer2.svg"
           alt="Happy farmer in green field"
-          className="max-w-full h-auto rounded-lg shadow-lg"
+          className="h-[500px] scale-150"
         />
       </div>
     </div>

@@ -6,9 +6,11 @@ import { setRecomendations } from "@/Redux/Slices/recomendationDataSlice";
 export const useGetRecomendations = () => {
   const dispatch = useDispatch();
   return useMutation({
-    mutationFn: (data) => api_methods.postRequest("", data),
+    mutationFn: (data) =>
+      api_methods.postRequest("http://192.168.70.35:5001/predict_crop", data),
     onSuccess: (data) => {
       dispatch(setRecomendations(data.data));
+      console.log(data.data);
     },
   });
 };

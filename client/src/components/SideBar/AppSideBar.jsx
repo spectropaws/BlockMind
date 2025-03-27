@@ -9,14 +9,9 @@ import {
   SidebarMenu,
   SidebarMenuButton,
   SidebarMenuItem,
+  useSidebar,
 } from "../ui/sidebar";
-import {
-  Calendar,
-  Home,
-  Loader,
-  Power,
-  Sprout,
-} from "lucide-react";
+import { Calendar, Home, Loader, Power, Sprout } from "lucide-react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { ScrollArea } from "../ui/scroll-area";
 import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar";
@@ -62,6 +57,7 @@ const AppSideBar = () => {
   //     navigate("/login");
   //   }
   // }, [isError, isSuccess]);
+  const { isOpen } = useSidebar();
   const handleLogout = () => {
     mutation.mutate();
   };
@@ -113,37 +109,49 @@ const AppSideBar = () => {
       </SidebarContent>
       <SidebarFooter>
         <SidebarMenu>
-          <SidebarMenuItem className="border border-primary rounded-lg">
-            <DropdownMenu>
-              <DropdownMenuTrigger asChild>
-                <div className="p-2 flex gap-4">
-                  <Avatar className={"h-10 w-10"}>
-                    <AvatarImage src={user.avatar} alt={user.name} />
-                    <AvatarFallback>{getNickName(user.name)}</AvatarFallback>
-                  </Avatar>
-                  <div className="text-sm">
-                    <p className="font-semibold capitalize">{user.name}</p>
-                    <p className="text-foreground/50">{user.email}</p>
+          <SidebarMenuItem className="py-2" asChild>
+            <SidebarMenuButton>
+              <DropdownMenu>
+                <DropdownMenuTrigger asChild>
+                  <div
+                    // className={`flex gap-4 ${
+                    //   isOpen ? "" : "w-16 -translate-x-2"
+                    // }`}
+                  >
+                    <Avatar
+                      // className={`h-10 w-10 ${
+                      //   isOpen ? "" : "w-8 h-8 translate-y-1"
+                      // }`}
+                    >
+                      <AvatarImage src={user.avatar} alt={user.name} />
+                      <AvatarFallback>{getNickName(user.name)}</AvatarFallback>
+                    </Avatar>
+                    <div className="text-sm">
+                      <p className="font-semibold capitalize">{user.name}</p>
+                      <p className="text-foreground/50">{user.email}</p>
+                    </div>
                   </div>
-                </div>
-              </DropdownMenuTrigger>
-              <DropdownMenuContent>
-                <DropdownMenuItem
-                  className={`${
-                    mutation.isPending ? "pointer-events-none cursor-none" : ""
-                  }`}
-                  onClick={handleLogout}
-                >
-                  {mutation.isPending ? (
-                    <Loader className="animate-spin" />
-                  ) : (
-                    <>
-                      <Power /> LogOut
-                    </>
-                  )}
-                </DropdownMenuItem>
-              </DropdownMenuContent>
-            </DropdownMenu>
+                </DropdownMenuTrigger>
+                <DropdownMenuContent>
+                  <DropdownMenuItem
+                    className={`${
+                      mutation.isPending
+                        ? "pointer-events-none cursor-none"
+                        : ""
+                    }`}
+                    onClick={handleLogout}
+                  >
+                    {mutation.isPending ? (
+                      <Loader className="animate-spin" />
+                    ) : (
+                      <>
+                        <Power /> LogOut
+                      </>
+                    )}
+                  </DropdownMenuItem>
+                </DropdownMenuContent>
+              </DropdownMenu>
+            </SidebarMenuButton>
           </SidebarMenuItem>
         </SidebarMenu>
       </SidebarFooter>

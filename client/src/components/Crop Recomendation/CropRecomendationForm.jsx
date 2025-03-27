@@ -5,6 +5,7 @@ import { Button } from "../ui/button";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { recomendationSchema } from "@/zod-schemas/recomendationSchema";
+import { useGetRecomendations } from "@/hooks/use-recomendations";
 
 const CropRecomendationForm = () => {
   const {
@@ -14,6 +15,8 @@ const CropRecomendationForm = () => {
   } = useForm({
     resolver: zodResolver(recomendationSchema),
   });
+
+  const mutation = useGetRecomendations();
   const formFields = [
     {
       label: "N",
@@ -33,27 +36,38 @@ const CropRecomendationForm = () => {
     {
       label: "Temperarture",
       id: "temperature",
-      name: "Temperature",
+      name: "temperature",
     },
     {
       label: "Humidity",
       id: "humidity",
-      name: "Humidity",
+      name: "humidity",
     },
     {
       label: "PH",
       id: "ph",
-      name: "PH",
+      name: "ph",
     },
     {
       label: "RainFall",
       id: "n",
-      name: "RainFall",
+      name: "rainfall",
     },
   ];
 
-  const onSubmit = (data) => {
+  const onSubmit = async (data) => {
     console.log(data);
+
+    mutation.mutate(data);
+    // await fetch("http://192.168.70.35:5001/predict_crop", {
+    //   method: "POST",
+    //   credentials: "include", // Important for CORS credentials
+    //   headers: {
+    //     "Content-Type": "application/json",
+    //     "Access-Control-Allow-Credentials": true,
+    //   },
+    //   body: JSON.stringify(data),
+    // });
   };
 
   return (
