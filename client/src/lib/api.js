@@ -4,6 +4,7 @@ import { axiosInstance } from "./axiosConfig";
 class api_methods {
   _httpRequest = async (method, url, params, optional) => {
     try {
+      console.log(url);
       switch (method) {
         case "GET": {
           return await axiosInstance.get(

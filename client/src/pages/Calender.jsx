@@ -128,7 +128,7 @@ const MyCalendar = () => {
   };
 
   return (
-    <div className="h-full  p-4 bg-[#e0f2df50]">
+    <div className="h-full mt-14 md:mt-10  p-4 bg-[#e0f2df50]">
       <AddCalendar />
       <Calendar
         localizer={localizer}

@@ -7,7 +7,7 @@ import React from "react";
 
 const CropRecomendation = () => {
   return (
-    <div className="p-4 bg-gradient-to-b from-primary-foreground/20 to-white mt-20 md:mt-0">
+    <div className="p-4 bg-gradient-to-b from-primary-foreground/20 to-white mt-14 md:mt-10">
       <div className="text-center mb-12">
         <span className="flex items-center justify-center w-max mx-auto bg-primary-foreground/50 text-primary px-3 py-1 rounded-full text-sm mb-4">
           <Sprout /> AI Recommendation
