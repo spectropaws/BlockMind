@@ -1,5 +1,6 @@
 import React from "react";
 import { Button } from "../ui/button";
+import { Link } from "react-router-dom";
 
 const Landing = () => {
   return (
@@ -19,12 +20,14 @@ const Landing = () => {
           use.
         </p>
         <div className="flex space-x-4">
-          <Button className="bg-primary hover:bg-green-600">Get Started</Button>
+          <Button className="bg-primary hover:bg-green-600">
+            <Link to={"/crop-recomendation"}>Get Started</Link>
+          </Button>
           <Button
             variant="outline"
             className="border-green-500 text-green-500 hover:bg-green-50"
           >
-            Explore Features
+            <a href={"#feature"}>Explore Features</a>
           </Button>
         </div>
       </div>

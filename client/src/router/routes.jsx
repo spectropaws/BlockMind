@@ -27,7 +27,7 @@ const router = createBrowserRouter(
         }
       >
         <Route index element={<Home />} />
-        <Route path="calender" element={<Calender />} />
+        <Route path="calendar" element={<Calender />} />
         <Route path="crop-recomendation" element={<CropRecomendation />} />
         <Route path="disease-detection" element={<DiseaseDetection />} />
       </Route>

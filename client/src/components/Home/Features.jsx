@@ -6,7 +6,8 @@ import {
   CardDescription,
   CardFooter,
 } from "@/components/ui/card";
-import { Sprout, Leaf } from "lucide-react";
+import { Sprout, Leaf, Calendar } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const Features = () => {
   const features = [
@@ -15,23 +16,29 @@ const Features = () => {
       title: "Crop Recommendation",
       description:
         "Get AI-powered suggestions on the best crops to plant based on your soil conditions and climate.",
+      to: "/crop-recomendation",
     },
     {
       icon: Leaf,
       title: "Disease Detection",
       description:
         "Upload images of your plants to identify diseases and get treatment recommendations.",
+      to: "/disease-detection",
     },
     {
-      icon: Leaf,
-      title: "Fertilizer Optimization",
+      icon: Calendar,
+      title: "Event Calendar",
       description:
-        "Receive custom fertilizer recommendations to maximize yield while minimizing costs.",
+        "Let our AI create optimized schedules for watering, fertilizing, and harvesting.",
+      to: "calendar",
     },
   ];
 
   return (
-    <div className="container mx-auto px-8 py-5 bg-gradient-to-b from-white via-primary-foreground/50 to-primary-foreground/80">
+    <div
+      id="feature"
+      className="container mx-auto px-8 py-5 bg-gradient-to-b from-white via-primary-foreground/50 to-primary-foreground/80"
+    >
       <div className="text-center mb-12">
         <h2 className="text-3xl font-bold text-gray-800 mb-4">
           Powerful Features
@@ -56,7 +63,7 @@ const Features = () => {
             </CardHeader>
             <CardFooter>
               <button className="text-primary/80 hover:text-primary font-medium">
-                Learn More &gt;
+                <Link to={feature.to}>Learn More &gt;</Link>
               </button>
             </CardFooter>
           </Card>

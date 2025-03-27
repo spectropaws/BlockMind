@@ -1,7 +1,26 @@
-import React from 'react';
-import { Sprout, HelpCircle, Mail, FileText } from 'lucide-react';
+import React from "react";
+import { Sprout, HelpCircle, Mail, FileText } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const Footer = () => {
+  const links = [
+    {
+      label: "Home",
+      to: "/",
+    },
+    {
+      label: "Crop Recommendation",
+      to: "/crop-recomendation",
+    },
+    {
+      label: "Disease Detection",
+      to: "/disease-detection",
+    },
+    {
+      label: "Calendar",
+      to: "/calendar",
+    },
+  ];
   return (
     <footer className="container mx-auto pl-10 py-12 grid md:grid-cols-3 gap-8 mt-10">
       <div>
@@ -10,17 +29,21 @@ const Footer = () => {
           <h3 className="text-xl font-bold text-gray-800">CropMind</h3>
         </div>
         <p className="text-gray-600">
-          Revolutionizing farming with AI-powered insights and recommendations for better crop management and yield optimization.
+          Revolutionizing farming with AI-powered insights and recommendations
+          for better crop management and yield optimization.
         </p>
       </div>
       <div>
         <h4 className="font-semibold text-gray-800 mb-4">Quick Links</h4>
         <ul className="space-y-2">
-          {['Home', 'Crop Recommendation', 'Disease Detection', 'Fertilizer Optimization'].map((link) => (
+          {links.map((link) => (
             <li key={link}>
-              <a href="#" className="text-gray-600 hover:text-green-600 transition-colors">
+              {/* <a href="#" className="text-gray-600 hover:text-green-600 transition-colors">
                 {link}
-              </a>
+              </a> */}
+              <Link to={link.to} className="hover:text-primary">
+                {link.label}
+              </Link>
             </li>
           ))}
         </ul>
@@ -43,7 +66,9 @@ const Footer = () => {
         </ul>
       </div> */}
       <div className="md:col-span-3 flex flex-col md:flex-row justify-between items-center border-t pt-4 mt-4">
-        <p className="text-gray-500 text-sm">© 2025 CropMind AI. All rights reserved.</p>
+        <p className="text-gray-500 text-sm">
+          © 2025 CropMind AI. All rights reserved.
+        </p>
       </div>
     </footer>
   );
