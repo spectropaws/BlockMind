@@ -11,7 +11,16 @@ import {
   SidebarMenuItem,
   useSidebar,
 } from "../ui/sidebar";
-import { Calendar, Home, Loader, Power, Sprout } from "lucide-react";
+import {
+  Bug,
+  Calendar,
+  Home,
+  Leaf,
+  Loader,
+  PillBottle,
+  Power,
+  Sprout,
+} from "lucide-react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { ScrollArea } from "../ui/scroll-area";
 import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar";
@@ -32,14 +41,19 @@ const AppSideBar = () => {
   const sideBarLinks = [
     { title: "Home", icon: <Home size={22} />, path: "/" },
     {
-      title: "Crop Recomendation",
-      icon: <Calendar size={22} />,
+      title: "Crop ",
+      icon: <Leaf size={22} />,
       path: "/crop-recomendation",
     },
     {
       title: "Disease Detection",
-      icon: <Calendar size={22} />,
+      icon: <Bug size={22} />,
       path: "/disease-detection",
+    },
+    {
+      title: "Fertilizers",
+      icon: <PillBottle size={22} />,
+      path: "/fertilizers-recommendations",
     },
     { title: "Calendar", icon: <Calendar size={22} />, path: "/calendar" },
     // { title: "Calender", icon: <Calendar size={22} />, path: "/calender" },
@@ -114,14 +128,14 @@ const AppSideBar = () => {
               <DropdownMenu>
                 <DropdownMenuTrigger asChild>
                   <div
-                    // className={`flex gap-4 ${
-                    //   isOpen ? "" : "w-16 -translate-x-2"
-                    // }`}
+                    className={`flex gap-4 ${
+                      isOpen ? "" : "w-16 -translate-x-2"
+                    }`}
                   >
                     <Avatar
-                      // className={`h-10 w-10 ${
-                      //   isOpen ? "" : "w-8 h-8 translate-y-1"
-                      // }`}
+                      className={`h-10 w-10 ${
+                        isOpen ? "" : "w-8 h-8 translate-y-1"
+                      }`}
                     >
                       <AvatarImage src={user.avatar} alt={user.name} />
                       <AvatarFallback>{getNickName(user.name)}</AvatarFallback>

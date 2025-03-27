@@ -4,7 +4,7 @@ import api_methods from "../lib/api";
 export const useGetEvents = () => {
   return useQuery({
     queryKey: ["calendar"],
-    queryFn: api_methods.getRequest("/events"),
+    queryFn: api_methods.getRequest("http://192.168.70.35:5001/schedule_calendar"),
   });
 };
 
