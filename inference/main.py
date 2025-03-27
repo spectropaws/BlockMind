@@ -1,11 +1,26 @@
 import crop_recommendation
 import fertilizer_recommendation
+import crop_calendar
 from flask import Flask, jsonify, request
 from flask_cors import CORS
 
 # Initialize Flask app
 app = Flask(__name__)
 CORS(app, supports_credentials=True, resources={r"/*": {"origins": "*"}})
+
+
+@app.route("/schedule_calendar", methods=["POST"])
+def predict_calendar():
+    try:
+        # Get JSON data from request
+        data = request.get_json()
+        schedule = crop_calendar.fetch_schedule(data)
+
+        # Return response
+        return jsonify({"schedule": schedule})
+
+    except Exception as e:
+        return jsonify({"error": str(e)})
 
 
 @app.route("/predict_fertilizer", methods=["POST"])

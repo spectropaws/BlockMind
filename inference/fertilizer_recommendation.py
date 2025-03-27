@@ -6,10 +6,11 @@ base_model_path = "./models/"
 model = joblib.load(base_model_path + "fertilizer_mlp_model.pkl")
 scaler = joblib.load(base_model_path + "fertilizer_scaler.pkl")
 y_label_encoder = joblib.load(base_model_path + "fertilizer_encoder.pkl")
+crop_label_encoder = joblib.load(base_model_path + "fertilizer_crop_label_encoder.pkl")
 
 
 def predict_fertilizer(N, P, K, temperature, humidity, ph, rainfall, crop_label):
-    crop_label_encoded = y_label_encoder.transform([crop_label])[0]
+    crop_label_encoded = crop_label_encoder.transform([crop_label])[0]
     input_data = np.array(
         [[N, P, K, temperature, humidity, ph, rainfall, crop_label_encoded]],
         dtype=float,
