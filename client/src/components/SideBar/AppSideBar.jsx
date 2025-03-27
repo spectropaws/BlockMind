@@ -46,7 +46,7 @@ const AppSideBar = () => {
       icon: <Calendar size={22} />,
       path: "/disease-detection",
     },
-    { title: "Calendar", icon: <Calendar size={22} />, path: "/calender" },
+    { title: "Calendar", icon: <Calendar size={22} />, path: "/calendar" },
     // { title: "Calender", icon: <Calendar size={22} />, path: "/calender" },
   ];
   const { pathname } = useLocation();

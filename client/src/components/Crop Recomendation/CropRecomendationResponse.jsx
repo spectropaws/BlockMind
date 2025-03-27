@@ -4,7 +4,7 @@ import PHScaleIndicator from "./PHScaleIndicator ";
 
 const CropRecomendationResponse = () => {
   return (
-    <div className="w-1/2 bg-primary-foreground/50 rounded-2xl p-4">
+    <div className="md:w-1/2 bg-primary-foreground/50 rounded-2xl p-4">
       {/* <div>
         <div>
           <Sprout className="h-16 w-16 text-primary mx-auto mb-4 p-4 bg-primary-foreground rounded-full" />

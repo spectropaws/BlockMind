@@ -1,11 +1,12 @@
 import React from "react";
 import { Button } from "@/components/ui/button";
 import { Calendar } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const AICalendarSection = () => {
   return (
-    <div className="flex mt-16">
-      <div className="container mx-auto pr-8 pl-20 py-16 w-1/2">
+    <div className="flex mt-16 flex-col-reverse md:flex-row">
+      <div className="container mx-auto px-10 md:pr-8 md:pl-20 py-16 md:w-1/2">
         <span className="flex items-center w-max gap-2 bg-primary-foreground/50 text-primary px-3 py-1 rounded-full text-sm mb-4">
           <Calendar size={18} />
           Smart Planning
@@ -30,12 +31,12 @@ const AICalendarSection = () => {
             </li>
           ))}
         </ul>
-        <Button className="bg-primary hover:bg-primary/80">
-          Try Calendar
+        <Button className="bg-primary hover:bg-primary/80" asChild>
+          <Link to={"/calendar"}>Try Calendar &gt;</Link>
         </Button>
       </div>
-      <div className="w-1/2 px-5 md:mr-5">
-          <img src="/calendar.png" alt="calendar" />
+      <div className="md:w-1/2 px-5 md:mr-5">
+        <img src="/calendar.png" alt="calendar" />
       </div>
     </div>
   );
