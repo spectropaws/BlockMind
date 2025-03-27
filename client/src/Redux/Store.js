@@ -4,6 +4,7 @@ import recomendationDataSlice from "./Slices/recomendationDataSlice";
 import diseaseDataSlice from "./Slices/diseaseDataSlice";
 import fertilizersDataSlice from "./Slices/fertilizersDataSlice";
 import formDataSlice from "./Slices/formDataSlice";
+import eventDataSlice from "./Slices/eventsDataSlice";
 
 export const store = configureStore({
   reducer: {
@@ -12,5 +13,6 @@ export const store = configureStore({
     diseaseData: diseaseDataSlice,
     fertilizersData: fertilizersDataSlice,
     formData: formDataSlice,
+    eventData: eventDataSlice,
   },
 });

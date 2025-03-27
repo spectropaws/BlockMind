@@ -3,19 +3,10 @@ import { Calendar, momentLocalizer, Views } from "react-big-calendar";
 import moment from "moment";
 import "react-big-calendar/lib/css/react-big-calendar.css";
 
-import {
-  Dialog,
-  DialogContent,
-  DialogHeader,
-  DialogTitle,
-  DialogDescription,
-} from "@/components/ui/dialog";
-import { Button } from "@/components/ui/button";
-import { Clock, MapPin, FileText } from "lucide-react";
-import { useGetEvents } from "@/hooks/use-calendar";
-import { toast } from "react-toastify";
-import AddCalendar from "@/components/Calendar/AddCalendar";
+import { Clock, MapPin, FileText, Loader } from "lucide-react";
+import CalendarForm from "@/components/Calendar/CalendarForm.jsx";
 import "../Styles/calendar.css";
+import { useSelector } from "react-redux";
 
 const localizer = momentLocalizer(moment);
 
@@ -69,15 +60,31 @@ const MyCalendar = () => {
   // ]);
 
   // const [selectedEvent, setSelectedEvent] = useState(null);
-  const [events] = useState(null);
+  const [events, setEvents] = useState([]);
+  const { data } = useSelector((state) => state.eventData);
 
-  const { data, isLoading, isFetched } = useGetEvents();
+  // const { data, isLoading, isFetched } = useGetEvents();
+
+  useEffect(() => {
+    const modified = data.map((event) => ({
+      color: event.color,
+      title: event.process,
+      start: moment(event.start).toDate(),
+      end: moment(event.end).toDate(),
+    }));
+    console.log(modified);
+    setEvents(modified);
+  }, [data]);
 
   const [view, setView] = useState(Views.MONTH);
   const [date, setDate] = useState(new Date());
 
-
-  useEffect(() => {}, [isFetched, isLoading])
+  // useEffect(() => {
+  //   if (mutation.isFetched) {
+  //     setEvents(data?.data);
+  //     console.log(data.data);
+  //   }
+  // }, [mutation.isFetched, mutation.isPending]);
 
   // const handleSelectEvent = (event) => {
   //   setSelectedEvent(event);
@@ -89,7 +96,8 @@ const MyCalendar = () => {
 
   return (
     <div className="h-full mt-14 md:mt-10  p-4 bg-[#e0f2df50]">
-      <AddCalendar />
+      {/* <AddCalendar /> */}
+      <CalendarForm />
       <Calendar
         localizer={localizer}
         events={events}
